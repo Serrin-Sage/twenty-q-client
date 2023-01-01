@@ -35,6 +35,7 @@
     width: 500px;
     color: white;
     font-size: 30px;
+    font-family: sans-serif;
     padding: 1px;
     margin: 0;
 }
@@ -53,11 +54,14 @@
 }
 
 .main-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 50px;
     width: 80px;
     font-weight: bold;
+    font-family: sans-serif;
     text-decoration: none;
-    text-align: center;
     color: black;
     border-top: solid 2px white;
     border-left: solid 2px white;
@@ -65,13 +69,11 @@
     border-bottom: solid 2px black;
     cursor: url(https://tinyurl.com/2p8w7p9c), auto;
 }
-.main-btn Link {
-    margin: 10px;
-}
+
 
 .main-btn:active {
     /* background-color: rgb(167, 167, 167); */
     border-top: solid 2px black;
     border-left: solid 2px black;
-    font-size: 12px;
+    font-size: 15px;
 }
