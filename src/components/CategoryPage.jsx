@@ -13,16 +13,21 @@ const CategoryPage = () => {
     return (
         <div className="category-container">
             <div className="category-content">
-                <h1>Categories</h1>
+            <h1 className="title">Categories</h1>
+            <div className="category-names">
                 {
                     categories.map((category) =>{
                         return (
-                            <div key={category.id}>
-                                {category.name}
+                            <div key={category.id} className="category">
+                                <div>
+                                    {category.name}
+                                </div>
                             </div>
                         )
                     })
                 }
+
+            </div>
             </div>
         </div>
     )
