@@ -1,0 +1,77 @@
+.main-page-container {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* background: rgb(27, 27, 27); */
+  background: url(https://cdn.discordapp.com/attachments/751140341348040826/1058821472057049258/windowsBG.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: url(https://tinyurl.com/2p8w7p9c), auto;
+  z-index: 1;
+}
+
+.main-page {
+    display: flex;
+    justify-content: center;
+    /* background-color: rgb(102, 154, 202); */
+    /* border: solid 4px rgb(108, 108, 235); */
+    background-color: rgb(200, 204, 189);
+    border-top: solid 3px white;
+    border-left: solid 3px white;
+    border-right: solid 3px black;
+    border-bottom: solid 3px black;
+    padding: 20px;
+    height: 50%;
+    width: 500px;
+    /* cursor: default; */
+    
+}
+
+.title {
+    background: linear-gradient(90deg, rgb(0, 0, 134), rgb(48, 128, 194));
+    text-align: left;
+    width: 500px;
+    color: white;
+    font-size: 30px;
+    padding: 1px;
+    margin: 0;
+}
+
+.main-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 300px;
+    transform: translateY(50px);
+    background-color: rgb(226, 226, 226);
+    border-top: solid 3px black;
+    border-left: solid 3px black;
+    border-bottom: solid 3px grey;
+    border-right: solid 3px grey;
+}
+
+.main-btn {
+    height: 50px;
+    width: 80px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    border-top: solid 2px white;
+    border-left: solid 2px white;
+    border-right: solid 2px black;
+    border-bottom: solid 2px black;
+    cursor: url(https://tinyurl.com/2p8w7p9c), auto;
+}
+.main-btn Link {
+    margin: 10px;
+}
+
+.main-btn:active {
+    /* background-color: rgb(167, 167, 167); */
+    border-top: solid 2px black;
+    border-left: solid 2px black;
+    font-size: 12px;
+}
