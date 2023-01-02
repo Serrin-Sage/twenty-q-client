@@ -5,6 +5,7 @@ import App from './App'
 import './index.css'
 import './stylesheets/mainpage.css'
 import './stylesheets/categorypage.css'
+import './stylesheets/lobbyform.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <BrowserRouter>

@@ -1,0 +1,13 @@
+.lobby-form-container {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(200, 204, 189);
+    border-top: solid 3px white;
+    border-left: solid 3px white;
+    border-right: solid 3px black;
+    border-bottom: solid 3px black;
+    padding: 20px;
+    height: fit-content;
+    width: 500px;
+
+}

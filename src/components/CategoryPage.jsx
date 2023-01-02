@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
-
-const CategoryPage = () => {
+const CategoryPage = ({ setSelectedCat }) => {
     const [categories, setCategories] = useState([])
     useEffect(() => {
         fetch("http://localhost:3000/categories")
@@ -18,9 +18,9 @@ const CategoryPage = () => {
                 {
                     categories.map((category) =>{
                         return (
-                            <div key={category.id} className="category">
-                                <div>
-                                    {category.name}
+                            <div key={category.id}>
+                                <div className="category" onClick={() => setSelectedCat(category.name)}>
+                                    <Link to="/lobbyform" className="">{category.name}</Link>
                                 </div>
                             </div>
                         )
