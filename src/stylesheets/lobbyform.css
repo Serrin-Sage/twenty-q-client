@@ -9,5 +9,33 @@
     padding: 20px;
     height: fit-content;
     width: 500px;
+    font-family: sans-serif;
+}
 
+.form-container {
+    background-color: rgb(226, 226, 226);
+    border-top: solid 3px black;
+    border-left: solid 3px black;
+    border-bottom: solid 3px grey;
+    border-right: solid 3px grey;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.form-label {
+    margin: 10px;
+}
+
+.input-box {
+    margin-left: 1rem;
+    border-top: solid 3px rgb(85, 85, 85);
+    border-left: solid 3px rgb(85, 85, 85);
+    border-bottom: solid 3px rgb(207, 207, 207);
+    border-right: solid 3px rgb(207, 207, 207);
+}
+
+.answer-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }

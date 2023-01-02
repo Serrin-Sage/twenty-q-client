@@ -1,23 +1,36 @@
-const LobbyForm = ({ selectedCat }) => {
+import { useState, useEffect } from "react"
 
+const LobbyForm = ({ selectedCat }) => {
+    const [lobbyName, setLobbyName] = useState("")
+    const [numOfPlayers, setNumOfPlayers] = useState(0)
+    const [answer, setAnswer] = useState("")
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(lobbyName)
+        console.log(numOfPlayers)
+        console.log(answer)
+    }
     return (
         <div className="lobby-form-container">
             <div className="form-content">
-                <h1>LOBBY FORM</h1>
-                <form>
-                    <label>
-                        Lobby Name: <br/>
-                        <input type="text" name="name" />
+                <h1 className="title">Lobby Form</h1>
+                <form onSubmit={handleSubmit} className="form-container">
+                    <label className="form-label">
+                        Enter lobby name:
+                        <input type="text" value={lobbyName} name="name" className="input-box" onChange={(e) => setLobbyName(e.target.value)}/>
                     </label>
                     <br />
-                    <label>
-                        Password: <br/>
-                        <input type="password" name="password" />
+                    <br />
+                    <label className="form-label">
+                        Password:
+                        <input type="password" name="password" className="input-box"/>
                     </label>
                     <br />
-                    <label>
-                        Number of players: <br/>
-                        <select>
+                    <br />
+                    <label className="form-label">
+                        Number of players:
+                        <select onChange={(e) => setNumOfPlayers(e.target.value)}>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -27,11 +40,16 @@ const LobbyForm = ({ selectedCat }) => {
                         </select>
                     </label>
                     <br/>
-                    <label>
-                        Think of something from {selectedCat} category <br/>
-                        and input it below <br />
-                        <input type="text" name="answer" />
-                    </label>
+                    <br/>
+                    <div className="answer-container">
+                        <label className="form-label">
+                            Think of something from {selectedCat} category <br/>
+                            and input it below: <br />
+                            <input type="text" name="answer" className="input-box" onChange={(e) => setAnswer(e.target.value)}/>
+                        </label>
+                    </div>
+                    <br/>
+                    <input type="submit"></input>
                 </form>
             </div>
         </div>
