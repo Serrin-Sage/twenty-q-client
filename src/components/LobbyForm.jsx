@@ -30,7 +30,7 @@ const LobbyForm = ({ selectedCat }) => {
                     <br />
                     <label className="form-label">
                         Number of players:
-                        <select onChange={(e) => setNumOfPlayers(e.target.value)}>
+                        <select className="number-select" onChange={(e) => setNumOfPlayers(e.target.value)}>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -43,13 +43,13 @@ const LobbyForm = ({ selectedCat }) => {
                     <br/>
                     <div className="answer-container">
                         <label className="form-label">
-                            Think of something from {selectedCat} category <br/>
+                            Think of something from the <span className="target-category">{selectedCat}</span> category <br/>
                             and input it below: <br />
                             <input type="text" name="answer" className="input-box" onChange={(e) => setAnswer(e.target.value)}/>
                         </label>
                     </div>
                     <br/>
-                    <input type="submit"></input>
+                    <input type="submit" value="Create Lobby"/>
                 </form>
             </div>
         </div>

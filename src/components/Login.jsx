@@ -23,7 +23,7 @@ const Login = ({ host }) => {
             navigate('/categories')
         }
         else {
-            
+            navigate('/gamelist')
         }
     }
     return (
