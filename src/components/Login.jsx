@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ host }) => {
     const [username, setUserName] = useState("")
@@ -19,16 +19,24 @@ const Login = ({ host }) => {
 
     }
     return (
-        <div>
-            <h1>You are a {user}</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Enter a username:
-                    <input type="text" name="name" onChange={(e) => setUserName(e.target.value)}/>
-                </label>
-                <br/>
-                <input type="submit" />
-            </form>
+        <div className="login-container">
+            <h1 className="title">You are a {user}</h1>
+            <div className="login-content">
+                <form onSubmit={handleSubmit}>
+                    <label className="user-label">
+                        Enter a username:
+                        <input type="text" name="name" className="user-input" onChange={(e) => setUserName(e.target.value)}/>
+                    </label>
+                    <br/>
+                    <br/>
+                    <label>
+                        Choose a Profile Picture
+                    </label>
+                    <br />
+                    <br />
+                    <input type="submit" value="Enter" className="enter-btn"/>
+                </form>
+            </div>
         </div>
     )
 }
