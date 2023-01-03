@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = ({ host }) => {
     const [username, setUserName] = useState("")
+    const [selectedPic, setSelectedPic] = useState("default-icon")
     const navigate = useNavigate()
 
     let user = "";
@@ -31,6 +32,7 @@ const Login = ({ host }) => {
                     <br/>
                     <label>
                         Choose a Profile Picture
+                        <div className={`user-icon ${selectedPic}`}></div>
                     </label>
                     <br />
                     <br />

@@ -45,3 +45,15 @@
   width: 80px;
   height: 40px;
 }
+
+.user-icon {
+  height: 120px;
+    width: 120px;
+    background-size: 120px;
+    margin-top: 2rem;
+    background-image: url("src/assets/icons/default-user.png");
+}
+
+.user-icon.default-icon {
+  background-image: url("src/assets/icons/default-user.png");
+}
