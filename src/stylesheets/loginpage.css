@@ -1,0 +1,72 @@
+.login-container {
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: rgb(102, 154, 202); */
+    /* border: solid 4px rgb(108, 108, 235); */
+    background-color: rgb(200, 204, 189);
+    border-top: solid 3px white;
+    border-left: solid 3px white;
+    border-right: solid 3px black;
+    border-bottom: solid 3px black;
+    padding: 20px;
+    /* padding-bottom: 100px; */
+    height: fit-content;
+    width: 500px;
+    /* cursor: default; */
+}
+
+.login-content {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.user-label {
+  font-size: 20px;
+}
+
+.user-input {
+  margin: 1rem;
+  border-top: solid 3px rgb(85, 85, 85);
+  border-left: solid 3px rgb(85, 85, 85);
+  border-bottom: solid 3px rgb(207, 207, 207);
+  border-right: solid 3px rgb(207, 207, 207);
+}
+
+.user-icon {
+  height: 120px;
+  width: 120px;
+  background-size: 120px;
+  margin-bottom: 1rem;
+}
+
+.picture-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.pic-options {
+  display: flex;
+  
+}
+
+.icon {
+  height: 50px;
+  margin: 8px;
+}
+
+.enter-btn {
+  margin: 1rem;
+  background-color: rgb(200, 204, 189);
+  border-top: solid 3px white;
+  border-left: solid 3px white;
+  border-right: solid 3px black;
+  border-bottom: solid 3px black;
+  width: 80px;
+  height: 40px;
+}

@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
-const MainPage = () => {
+const MainPage = ({ setHost }) => {
+    
 
     return (
         <div className="main-page">
             <div className="main-content">
                 <h1 className="title">20 Question Multiplayer</h1>
                 <div className="main-buttons">
-                    <Link to="categories" className="main-btn">HOST</Link>
-                    <Link to="/" className="main-btn">JOIN</Link>
+                    <Link to="login" className="main-btn" onClick={() => setHost(true)}>HOST</Link>
+                    <Link to="login" className="main-btn" onClick={() => setHost(false)}>JOIN</Link>
                 </div>
             </div>
         </div>
