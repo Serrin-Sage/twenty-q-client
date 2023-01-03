@@ -10,7 +10,7 @@
     border-right: solid 3px black;
     border-bottom: solid 3px black;
     padding: 20px;
-    padding-bottom: 100px;
+    /* padding-bottom: 100px; */
     height: fit-content;
     width: 500px;
     /* cursor: default; */
@@ -35,6 +35,31 @@
   border-right: solid 3px rgb(207, 207, 207);
 }
 
+.user-icon {
+  height: 120px;
+  width: 120px;
+  background-size: 120px;
+  margin-bottom: 1rem;
+}
+
+.picture-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.pic-options {
+  display: flex;
+  
+}
+
+.icon {
+  height: 50px;
+  margin: 8px;
+}
+
 .enter-btn {
   margin: 1rem;
   background-color: rgb(200, 204, 189);
@@ -44,16 +69,4 @@
   border-bottom: solid 3px black;
   width: 80px;
   height: 40px;
-}
-
-.user-icon {
-  height: 120px;
-    width: 120px;
-    background-size: 120px;
-    margin-top: 2rem;
-    background-image: url("src/assets/icons/default-user.png");
-}
-
-.user-icon.default-icon {
-  background-image: url("src/assets/icons/default-user.png");
 }
