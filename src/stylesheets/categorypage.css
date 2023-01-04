@@ -9,6 +9,7 @@
     padding: 20px;
     height: fit-content;
     width: 500px;
+    cursor: url(https://tinyurl.com/2p8w7p9c), auto;
 }
 
 .category-names {
@@ -18,7 +19,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 320px;
-    justify-content: space-around;
+    justify-content: space-around;    
+}
+.link {
+    cursor: url(https://tinyurl.com/2p8w7p9c), auto;
 }
 
 .category {
