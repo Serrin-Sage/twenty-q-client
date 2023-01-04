@@ -14,7 +14,9 @@ const CategoryPage = ({ setSelectedCat }) => {
     return (
         <div className="category-container">
             <div className="category-content">
-            <h1 className="title">Categories</h1>
+                <div className="title-container">
+                    <h1 className="title">Categories</h1>
+                </div>
             <div className="category-names">
                 {
                     categories.map((category) =>{

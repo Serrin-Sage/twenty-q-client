@@ -43,7 +43,9 @@ const Login = ({ host }) => {
     }
     return (
         <div className="login-container">
-            <h1 className="title">You are a {user}</h1>
+            <div className="title-container">
+                <h1 className="title">You are a {user}</h1>
+            </div>
             <div className="login-content">
                 <form onSubmit={handleSubmit}>
                     <label className="user-label">

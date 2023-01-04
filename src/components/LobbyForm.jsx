@@ -26,7 +26,9 @@ const LobbyForm = ({ selectedCat }) => {
     return (
         <div className="lobby-form-container">
             <div className="form-content">
-                <h1 className="title">Lobby Form</h1>
+                <div className="title-container">
+                    <h1 className="title">Lobby Form</h1>
+                </div>
                 <form onSubmit={handleSubmit} className="form-container">
                     <label className="form-label">
                         Enter lobby name:
