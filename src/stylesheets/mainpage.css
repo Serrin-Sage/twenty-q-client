@@ -36,7 +36,6 @@
     width: 500px;
     color: white;
     font-size: 30px;
-    font-family: sans-serif;
     padding: 1px;
     margin: 0;
 }
@@ -61,7 +60,6 @@
     height: 50px;
     width: 80px;
     font-weight: bold;
-    font-family: sans-serif;
     text-decoration: none;
     color: black;
     border-top: solid 2px white;

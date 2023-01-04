@@ -1,6 +1,10 @@
+@font-face {
+  font-family: Windows95;
+  src: url("./Windows95.ttf");
+}
 body {
   margin: 0;
-  
+  font-family: Windows95;
 }
 
 .App {

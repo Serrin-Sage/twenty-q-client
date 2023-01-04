@@ -7,9 +7,21 @@ const LobbyForm = ({ selectedCat }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(lobbyName)
-        console.log(numOfPlayers)
-        console.log(answer)
+        fetch("http://localhost:3000/lobbies", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                host_id: 1,
+                lobbyname: lobbyName,
+                players: numOfPlayers,
+                password: "",
+                answer: answer
+            })
+        })
+        .catch((errors) => console.log(errors))
     }
     return (
         <div className="lobby-form-container">
