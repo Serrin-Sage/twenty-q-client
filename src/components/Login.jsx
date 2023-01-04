@@ -26,7 +26,8 @@ const Login = ({ host }) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    name: username
+                    name: username,
+                    image: selectedPic.url
                 })
             })
             let res = await req.json()
