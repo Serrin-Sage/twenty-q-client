@@ -2,11 +2,15 @@ import { useState, useEffect } from "react"
 
 const LobbyForm = ({ selectedCat }) => {
     const [lobbyName, setLobbyName] = useState("")
-    const [numOfPlayers, setNumOfPlayers] = useState(0)
+    const [numOfPlayers, setNumOfPlayers] = useState(1)
     const [answer, setAnswer] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log(`answer: ${answer}`)
+        console.log(selectedCat)
+        console.log(password)
         fetch("http://localhost:3000/lobbies", {
             method: "POST",
             headers: {
@@ -17,12 +21,14 @@ const LobbyForm = ({ selectedCat }) => {
                 host_id: 1,
                 lobbyname: lobbyName,
                 players: numOfPlayers,
-                password: "",
-                answer: answer
+                answer: answer,
+                category: selectedCat,
+                password: password,
             })
         })
         .catch((errors) => console.log(errors))
     }
+
     return (
         <div className="lobby-form-container">
             <div className="form-content">
@@ -38,7 +44,7 @@ const LobbyForm = ({ selectedCat }) => {
                     <br />
                     <label className="form-label">
                         Password:
-                        <input type="password" name="password" className="input-box"/>
+                        <input type="password" name="password" className="input-box"onChange={(e) => setPassword(e.target.value)}/>
                     </label>
                     <br />
                     <br />
@@ -59,11 +65,12 @@ const LobbyForm = ({ selectedCat }) => {
                         <label className="form-label">
                             Think of something from the <span className="target-category">{selectedCat}</span> category <br/>
                             and input it below: <br />
-                            <input type="text" name="answer" className="input-box" onChange={(e) => setAnswer(e.target.value)}/>
+                            <input type="text" name="answer" className="input-box"  value={answer} onChange={(e) => {setAnswer(e.target.value)
+                            console.log(e.target.value)}}/>
                         </label>
                     </div>
                     <br/>
-                    <input type="submit" value="Create Lobby"/>
+                    <input type="submit" value="Create Lobby" className="create-btn"/>
                 </form>
             </div>
         </div>
