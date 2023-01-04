@@ -4,11 +4,12 @@ import { Link } from "react-router-dom"
 const CategoryPage = ({ setSelectedCat }) => {
     const [categories, setCategories] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/categories")
+        fetch("http://localhost:3000/games")
         .then((res) => res.json())
         .then((data) => {
             setCategories(data)
         })
+        console.log(categories)
     }, [])
     return (
         <div className="category-container">
@@ -19,8 +20,8 @@ const CategoryPage = ({ setSelectedCat }) => {
                     categories.map((category) =>{
                         return (
                             <div key={category.id}>
-                                <div className="category" onClick={() => setSelectedCat(category.name)}>
-                                    <Link to="/lobbyform" className="">{category.name}</Link>
+                                <div className="category" onClick={() => setSelectedCat(category.category)}>
+                                    <Link to="/lobbyform" className="">{category.category}</Link>
                                 </div>
                             </div>
                         )
