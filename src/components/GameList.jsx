@@ -1,28 +1,22 @@
-const GameList = () => {
+import { useState, useEffect } from "react"
 
-  const exampleGame = [
-    {
-      host_id: 1,
-      lobbyname: "TEST LOBBY",
-      category: "Movie",
-      players: 6,
-      password: false
-    },
-    {
-      host_id: 2,
-      lobbyname: "TEST LOBBY 2",
-      category: "Animal",
-      players: 4,
-      password: true
-    }
-]
+const GameList = () => {
+  const [gameArray, setGameArray] = useState([])
+  
+  useEffect(() => {
+    fetch("http://localhost:3000/lobbies")
+    .then((res) => res.json())
+    .then((data) => {
+      setGameArray(data)
+    })
+  },[])
 
   return (
     <div className="game-list-container">
       <h1>Game List</h1>
       <div className="game-list-content">
       {
-        exampleGame.map((game) => {
+        gameArray.map((game) => {
           return (
             <div className="lobby-details">
               <div>
