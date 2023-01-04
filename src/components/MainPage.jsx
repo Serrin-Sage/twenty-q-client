@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
-
+import Clippy from "./Clippy"
 const MainPage = ({ setHost }) => {
     
 
@@ -14,6 +14,7 @@ const MainPage = ({ setHost }) => {
                     <Link to="login" className="main-btn" onClick={() => setHost(true)}>HOST</Link>
                     <Link to="login" className="main-btn" onClick={() => setHost(false)}>JOIN</Link>
                 </div>
+            <Clippy />
             </div>
         </div>
     )
