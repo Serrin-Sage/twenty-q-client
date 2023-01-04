@@ -17,24 +17,24 @@ const Login = ({ host }) => {
         }
     }, [])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if (host) {
-            
-                fetch("http://localhost:3000/hosts", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        name: username
-                    })
+            let req = await fetch("http://localhost:3000/hosts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: username
                 })
-                .then(navigate('/categories'))
-                .catch((error) => console.log(error))
-                
-                
-            
+            })
+            let res = await req.json()
+            if (req.ok) {
+                navigate('/categories')
+            } else {
+                console.log("USERNAME IS EMPTY")
+            }
             
         }
         else {
