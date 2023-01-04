@@ -23,7 +23,7 @@ const PictureSwitcher = ({ setSelectedPic }) => {
       {
         imageArray.map((image) =>{
           return (
-            <div key={image.key} className="image-icon" onClick={() => changePic(image)}>
+            <div key={image.id} className="image-icon" onClick={() => changePic(image)}>
               <img src={image.url} alt={`Image of ${image.name}`} className="icon"/>
             </div>
           )

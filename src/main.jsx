@@ -7,6 +7,7 @@ import './stylesheets/mainpage.css'
 import './stylesheets/categorypage.css'
 import './stylesheets/lobbyform.css'
 import './stylesheets/loginpage.css'
+import './stylesheets/gamelist.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <BrowserRouter>
