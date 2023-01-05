@@ -32,7 +32,10 @@ function App() {
                                                         setShowClippy={setShowClippy}
                                                         showClippy={showClippy}/>} />
           <Route path='/gamelist' element={<GameList currentHost={currentHost} setLobby={setLobby}/>}/>
-          <Route path='/chat' element={<Chat lobby={lobby} currentUser={currentUser}/>}/>
+          <Route path='/chat' element={<Chat lobby={lobby} 
+                                             currentUser={currentUser}
+                                             currentHost={currentHost}
+                                             host={host}/>}/>
         </Routes>
         
       </div>
