@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-
 import Clippy from "./Clippy"
+
 const LobbyForm = ({ selectedCat, currentHost, setLobby, setShowClippy, showClippy }) => {
+
     const [lobbyName, setLobbyName] = useState("")
     const [numOfPlayers, setNumOfPlayers] = useState(1)
     const [answer, setAnswer] = useState("")

@@ -1,9 +1,11 @@
 import React from 'react'
 import { useEffect, useState } from 'react' 
 import { useNavigate } from "react-router-dom";
+import QuestionChat from './QuestionChat'
 
 export default function Chat({ host, lobby, currentUser, currentHost}) {
     const [messages , setMessages] = useState([])
+    const [lobbyHost, setLobbyHost] = useState({})
     const [aUser, setAUser] = useState({})
     const navigate = useNavigate()
 
@@ -44,12 +46,13 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${currentUser.id}`)
-        .then((res) => res.json())
-        .then((data) => {
-            setAUser(data)
-        })
+        fetch(`http://localhost:3000/hosts/${lobby.host_id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setLobbyHost(data)
+            })
     }, [])
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -80,6 +83,8 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
     }
 
   return (
+    <div className='game-page'>
+    <QuestionChat lobbyHost={lobbyHost} lobby={lobby} currentUser={currentUser} />
       <div className='chat'>
         <div className='title-container'>
             <h1 className='title'>Lobby Name: {lobby.lobbyname}</h1>
@@ -99,7 +104,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
                     messages.map((message) => {
                         return (
                             <div className='message-item' key={message.created_at}>
-                                <p className='message-username'>User_id: {message.user_id}</p>
+                                <p className='message-username'>{message.user_id < 1 ? "HOST" : `PLAYER ${message.user_id}`}</p>
                                 <p className='message-content'>{message.content}</p>
                             </div>
                         )
@@ -114,5 +119,6 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
                 </div>
         </form>
     </div>
+  </div>
   )
 }
