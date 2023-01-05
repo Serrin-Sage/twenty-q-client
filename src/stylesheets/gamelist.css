@@ -14,6 +14,7 @@
     height: fit-content;
     width: 500px;
     /* cursor: default; */
+    
 }
 
 .game-list-content {
@@ -42,4 +43,16 @@
 
 .password-key {
   height: 28px;
+}
+
+.blank-list {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.loading-symbol {
+  height: 50%;
 }
