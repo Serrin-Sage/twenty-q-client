@@ -56,7 +56,13 @@ const GameList = ({ setLobby, currentHost }) => {
       <div className="title-container">
         <h1 className="title">Game List</h1>
       </div>
+      
       <div className="game-list-content">
+        <div className="lobby-details" id="table-titles">
+          <div>Lobby Name</div>
+          <div>Category</div>
+          <div>Num of players</div>
+        </div>
         {
           loading ? <div className="blank-list"><img src="https://tinyurl.com/loading-symbol" className="loading-symbol"/></div> 
           : 
