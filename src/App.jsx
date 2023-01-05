@@ -29,7 +29,6 @@ function App() {
           <Route path="/lobbyform" element={<LobbyForm  setLobby={setLobby}
                                                         selectedCat={selectedCat} 
                                                         currentHost={currentHost}
-                                                        setLobby={setLobby}
                                                         setShowClippy={setShowClippy}
                                                         showClippy={showClippy}/>} />
           <Route path='/gamelist' element={<GameList currentHost={currentHost} setLobby={setLobby}/>}/>

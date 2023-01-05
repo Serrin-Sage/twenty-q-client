@@ -84,7 +84,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
 
   return (
     <div className='game-page'>
-    <QuestionChat lobbyHost={lobbyHost} lobby={lobby} currentUser={currentUser} />
+    {/* <QuestionChat lobbyHost={lobbyHost} lobby={lobby} currentUser={currentUser} /> */}
       <div className='chat'>
         <div className='title-container'>
             <h1 className='title'>Lobby Name: {lobby.lobbyname}</h1>
