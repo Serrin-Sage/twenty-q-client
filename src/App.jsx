@@ -8,6 +8,8 @@ import GameList from './components/GameList'
 
 function App() {
   const [selectedCat, setSelectedCat] = useState("")
+  const [currentUser, setCurrentUser] = useState([])
+  const [showClippy, setShowClippy] = useState(false)
   const [host, setHost] = useState(false)
   return (
     <div className="App">
@@ -15,9 +17,15 @@ function App() {
         <Routes>
           <Route path="/" element={ <MainPage setHost={setHost}/>}/>
           <Route path="/categories" element={ <CategoryPage setSelectedCat={setSelectedCat}/>} />
-          <Route path="/login" element={<Login host={host}/>}/>
-          <Route path="/lobbyform" element={ <LobbyForm selectedCat={selectedCat}/>} />
-          <Route path='/gamelist' element={<GameList />}/>
+          <Route path="/login" element={<Login host={host} 
+                                               setCurrentUser={setCurrentUser} 
+                                               setShowClippy={setShowClippy} 
+                                               showClippy={showClippy}/>}/>
+          <Route path="/lobbyform" element={ <LobbyForm selectedCat={selectedCat} 
+                                                        currentUser={currentUser}
+                                                        setShowClippy={setShowClippy}
+                                                        showClippy={showClippy}/>} />
+          <Route path='/gamelist' element={<GameList currentUser={currentUser}/>}/>
         </Routes>
         
       </div>

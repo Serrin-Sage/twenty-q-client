@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react"
-
-const LobbyForm = ({ selectedCat }) => {
+import Clippy from "./Clippy"
+const LobbyForm = ({ selectedCat, currentUser, setShowClippy, showClippy }) => {
     const [lobbyName, setLobbyName] = useState("")
     const [numOfPlayers, setNumOfPlayers] = useState(1)
     const [answer, setAnswer] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleSubmit = (e) => {
+    console.log(currentUser)
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(`answer: ${answer}`)
-        console.log(selectedCat)
-        console.log(password)
-        fetch("http://localhost:3000/lobbies", {
+        
+        let req = await fetch("http://localhost:3000/lobbies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                host_id: 1,
+                host_id: currentUser.id,
                 lobbyname: lobbyName,
                 players: numOfPlayers,
                 answer: answer,
@@ -26,7 +26,15 @@ const LobbyForm = ({ selectedCat }) => {
                 password: password,
             })
         })
-        .catch((errors) => console.log(errors))
+        let res = await req.json()
+        if (req.ok) {
+
+        } else {
+            console.log("NOT OK")
+            setShowClippy(true)
+        }
+        
+
     }
 
     return (
@@ -73,6 +81,10 @@ const LobbyForm = ({ selectedCat }) => {
                     <input type="submit" value="Create Lobby" className="create-btn"/>
                 </form>
             </div>
+            {showClippy ? <Clippy message={"Oops your lobby and/or answer is blank!"}
+                setShowClippy={setShowClippy}
+            />
+                : null}
         </div>
     )
 }
