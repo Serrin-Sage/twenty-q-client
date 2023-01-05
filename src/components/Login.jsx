@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PictureSwitcher from "./PictureSwitcher";
 import Clippy from "./Clippy";
 
-const Login = ({ host, setCurrentUser, setShowClippy, showClippy }) => {
+const Login = ({ host, setCurrentUser, setCurrentHost, setShowClippy, showClippy }) => {
     const [username, setUserName] = useState("")
     const [selectedPic, setSelectedPic] = useState('')
     
@@ -34,7 +34,7 @@ const Login = ({ host, setCurrentUser, setShowClippy, showClippy }) => {
             })
             let res = await req.json()
             if (req.ok) {
-                setCurrentUser(res)
+                setCurrentHost(res)
                 navigate('/categories')
             } else {
                 setShowClippy(true)
@@ -54,6 +54,7 @@ const Login = ({ host, setCurrentUser, setShowClippy, showClippy }) => {
             })
             let res = await req.json()
             if (req.ok) {
+                setCurrentUser(res)
                 navigate('/gamelist')
             } else {
                 setShowClippy(true)

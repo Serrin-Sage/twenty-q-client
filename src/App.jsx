@@ -10,8 +10,11 @@ import Chat from './components/Chat'
 function App() {
   const [selectedCat, setSelectedCat] = useState("")
   const [currentUser, setCurrentUser] = useState([])
+  const [currentHost, setCurrentHost] = useState([])
   const [showClippy, setShowClippy] = useState(false)
   const [host, setHost] = useState(false)
+  const [lobby, setLobby] = useState({})
+
   return (
     <div className="App">
       <div className='main-page-container'>
@@ -20,14 +23,15 @@ function App() {
           <Route path="/categories" element={ <CategoryPage setSelectedCat={setSelectedCat}/>} />
           <Route path="/login" element={<Login host={host} 
                                                setCurrentUser={setCurrentUser} 
+                                               setCurrentHost={setCurrentHost}
                                                setShowClippy={setShowClippy} 
                                                showClippy={showClippy}/>}/>
           <Route path="/lobbyform" element={ <LobbyForm selectedCat={selectedCat} 
-                                                        currentUser={currentUser}
+                                                        currentHost={currentHost}
                                                         setShowClippy={setShowClippy}
                                                         showClippy={showClippy}/>} />
-          <Route path='/gamelist' element={<GameList currentUser={currentUser}/>}/>
-          <Route path='/chat' element={<Chat />}/>
+          <Route path='/gamelist' element={<GameList currentHost={currentHost} setLobby={setLobby}/>}/>
+          <Route path='/chat' element={<Chat lobby={lobby} currentUser={currentUser}/>}/>
         </Routes>
         
       </div>
