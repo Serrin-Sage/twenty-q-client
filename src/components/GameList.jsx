@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 const GameList = () => {
   const [gameArray, setGameArray] = useState([])
-  
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
     fetch("http://localhost:3000/lobbies")
     .then((res) => res.json())
@@ -11,6 +11,12 @@ const GameList = () => {
     })
   },[])
 
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  },[])
 
   const ActiveGames = () => {
     return (
@@ -44,7 +50,12 @@ const GameList = () => {
         <h1 className="title">Game List</h1>
       </div>
       <div className="game-list-content">
-        {gameArray.length === 0 ? <div>NO GAMES</div> : <ActiveGames />}
+        {
+          loading ? <div className="blank-list"><img src="https://tinyurl.com/loading-symbol" className="loading-symbol"/></div> 
+          : 
+          <>{gameArray.length === 0 ? <div className="blank-list">NO GAMES FOUND</div> : <ActiveGames />} </>
+        }
+        
       
       </div>
     </div>
