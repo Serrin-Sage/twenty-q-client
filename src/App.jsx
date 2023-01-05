@@ -5,6 +5,7 @@ import Login from './components/Login'
 import CategoryPage from './components/CategoryPage'
 import LobbyForm from './components/LobbyForm'
 import GameList from './components/GameList'
+import Chat from './components/Chat'
 
 function App() {
   const [selectedCat, setSelectedCat] = useState("")
@@ -26,6 +27,7 @@ function App() {
                                                         setShowClippy={setShowClippy}
                                                         showClippy={showClippy}/>} />
           <Route path='/gamelist' element={<GameList currentUser={currentUser}/>}/>
+          <Route path='/chat' element={<Chat />}/>
         </Routes>
         
       </div>
