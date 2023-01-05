@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
+
 import Clippy from "./Clippy"
 const LobbyForm = ({ selectedCat, currentHost, setShowClippy, showClippy }) => {
     const [lobbyName, setLobbyName] = useState("")
@@ -6,7 +8,7 @@ const LobbyForm = ({ selectedCat, currentHost, setShowClippy, showClippy }) => {
     const [answer, setAnswer] = useState("")
     const [password, setPassword] = useState("")
 
-    console.log(currentHost)
+   const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -28,7 +30,7 @@ const LobbyForm = ({ selectedCat, currentHost, setShowClippy, showClippy }) => {
         })
         let res = await req.json()
         if (req.ok) {
-
+            navigate('/chat')
         } else {
             console.log("NOT OK")
             setShowClippy(true)

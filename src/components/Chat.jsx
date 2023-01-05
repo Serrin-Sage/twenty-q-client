@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 
 export default function Chat({ lobby, currentUser}) {
     const [messages , setMessages] = useState([])
+
+    const [aUser, setAUser] = useState({})
+
     useEffect(() => {
         let ws;
         const request = async () => {
@@ -39,6 +42,15 @@ export default function Chat({ lobby, currentUser}) {
         connect();
     }, []);
 
+    useEffect(() => {
+        fetch(`http://localhost:3000/users/${currentUser.id}`)
+        .then((res) => res.json())
+        .then((data) => {
+            setAUser(data)
+        })
+    }, [])
+
+    console.log(aUser)
     const handleSubmit = async (event) => {
         event.preventDefault();
         let req = await fetch(`http://localhost:3000/messages`, {
