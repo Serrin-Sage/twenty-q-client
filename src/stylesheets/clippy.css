@@ -3,10 +3,8 @@
 }
 
 .clippy-container {
-  
   /* background: rgba(255, 255, 255, 0.7); */
-  /* display: none; */
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -14,18 +12,27 @@
   height: 100%;
   top: 0;
   left: 0;
+  transition: 0.35s;
+}
+#fade-in {
+  animation: fadein 0.35s ease-in;
+}
+#fade-out {
+  animation: fadein 0.35s reverse;
 }
 
 .clippy-div {
-  transform: translateX(200px);
+  transform: translate3d(350px, 90px, 0);
 }
 
 .speech-bubble {
   position: relative;
   background: #fdff99;
   border-radius: .4em;
-  transform: translate3d(70px, -200px, 0);
+  transform: translate3d(80px, -260px, 0);
   padding: 1rem;
+  max-width: 120px;
+  
 }
 
 .speech-bubble:after {
@@ -42,3 +49,39 @@
   margin-left: -18.5px;
   margin-bottom: -37px;
 }
+
+@keyframes fadein {
+  0% {
+      opacity: 0.0;
+  }
+  10% {
+      opacity: 0.1;
+  }
+  20% {
+      opacity: 0.2;
+  }
+  30% {
+      opacity: 0.3;
+  }
+  40% {
+      opacity: 0.4;
+  }
+  50% {
+      opacity: 0.5;
+  }
+  60% {
+      opacity: 0.6;
+  }
+  70% {
+      opacity: 0.7;
+  }
+  80% {
+      opacity: 0.8;
+  }
+  90% {
+      opacity: 0.9;
+  }
+  100% {
+      opacity: 1;
+  }
+} 
