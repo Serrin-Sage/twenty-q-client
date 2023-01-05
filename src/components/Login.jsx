@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PictureSwitcher from "./PictureSwitcher";
+import Clippy from "./Clippy";
 
 const Login = ({ host }) => {
     const [username, setUserName] = useState("")
     const [selectedPic, setSelectedPic] = useState('')
+    const [showClippy, setShowClippy] = useState(false)
+    
     const navigate = useNavigate()
 
     let user = "";
@@ -34,7 +37,7 @@ const Login = ({ host }) => {
             if (req.ok) {
                 navigate('/categories')
             } else {
-                console.log("USERNAME IS EMPTY")
+                setShowClippy(true)
             }
             
         }
@@ -66,6 +69,10 @@ const Login = ({ host }) => {
                     <input type="submit" value="Enter" className="enter-btn"/>
                 </form>
             </div>
+            {showClippy ? <Clippy message={"Oops your username is blank!"} 
+                                  setShowClippy={setShowClippy} 
+                                /> 
+                        : null}
         </div>
     )
 }
