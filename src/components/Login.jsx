@@ -42,7 +42,22 @@ const Login = ({ host }) => {
             
         }
         else {
-            navigate('/gamelist')
+            let req = await fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: username,
+                    image: selectedPic.url
+                })
+            })
+            let res = await req.json()
+            if (req.ok) {
+                navigate('/gamelist')
+            } else {
+                setShowClippy(true)
+            }
         }
     }
     return (
