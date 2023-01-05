@@ -43,9 +43,13 @@ export default function Chat({ lobby, currentUser}) {
         event.preventDefault();
         let req = await fetch(`http://localhost:3000/messages`, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json',
+                "Accept": "application/json"
+                },
             body: JSON.stringify({content: event.target.content.value, lobby_id: lobby.id, user_id: currentUser.id})
         })
+        let res = await req.json()
+        console.log(res)
         // content = '';
     };
 
