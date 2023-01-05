@@ -31,14 +31,7 @@ const LobbyForm = ({ selectedCat, currentHost, setLobby, setShowClippy, showClip
         })
         let res = await req.json()
         if (req.ok) {
-            setLobby({
-                host_id: currentHost.id,
-                lobbyname: lobbyName,
-                players: numOfPlayers,
-                answer: answer,
-                category: selectedCat,
-                password: password,
-            })
+            setLobby(res)
             navigate('/chat')
         } else {
             console.log("NOT OK")
