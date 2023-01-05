@@ -1,10 +1,11 @@
 import React from 'react'
 import { useEffect, useState } from 'react' 
+import { useNavigate } from "react-router-dom";
 
 export default function Chat({ lobby, currentUser}) {
     const [messages , setMessages] = useState([])
-
     const [aUser, setAUser] = useState({})
+    const navigate = useNavigate()
 
     useEffect(() => {
         let ws;
@@ -65,8 +66,12 @@ export default function Chat({ lobby, currentUser}) {
     };
 
     const leaveGame = () => {
-        
+        fetch(`http://localhost:3000/users/${currentUser.id}`, {
+            method: "DELETE"
+        })
+        .then(navigate('/'))
     }
+
   return (
       <div className='chat'>
         <div className='title-container'>
