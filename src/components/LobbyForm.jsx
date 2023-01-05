@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 
 import Clippy from "./Clippy"
-const LobbyForm = ({ selectedCat, currentHost, setShowClippy, showClippy }) => {
+const LobbyForm = ({ selectedCat, currentHost, setLobby, setShowClippy, showClippy }) => {
     const [lobbyName, setLobbyName] = useState("")
     const [numOfPlayers, setNumOfPlayers] = useState(1)
     const [answer, setAnswer] = useState("")
@@ -12,6 +12,7 @@ const LobbyForm = ({ selectedCat, currentHost, setShowClippy, showClippy }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        
         
         let req = await fetch("http://localhost:3000/lobbies", {
             method: "POST",
@@ -30,6 +31,14 @@ const LobbyForm = ({ selectedCat, currentHost, setShowClippy, showClippy }) => {
         })
         let res = await req.json()
         if (req.ok) {
+            setLobby({
+                host_id: currentHost.id,
+                lobbyname: lobbyName,
+                players: numOfPlayers,
+                answer: answer,
+                category: selectedCat,
+                password: password,
+            })
             navigate('/chat')
         } else {
             console.log("NOT OK")
