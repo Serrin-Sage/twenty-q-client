@@ -1,10 +1,13 @@
 import React from 'react'
 import { useEffect, useState } from 'react' 
+import { useNavigate } from "react-router-dom";
 import QuestionChat from './QuestionChat'
 
-export default function Chat({ host, lobby, currentUser}) {
+export default function Chat({ host, lobby, currentUser, currentHost}) {
     const [messages , setMessages] = useState([])
     const [lobbyHost, setLobbyHost] = useState({})
+    const [aUser, setAUser] = useState({})
+    const navigate = useNavigate()
 
     useEffect(() => {
         let ws;
@@ -50,7 +53,7 @@ export default function Chat({ host, lobby, currentUser}) {
             })
     }, [])
 
-    console.log(lobbyHost)
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         let req = await fetch(`http://localhost:3000/messages`, {
@@ -65,12 +68,27 @@ export default function Chat({ host, lobby, currentUser}) {
         // content = '';
     };
 
+    const leaveGame = () => {
+        if (host) {
+            fetch(`http://localhost:3000/lobbies/${currentHost.id}`, {
+                method: "DELETE"
+            })
+                .then(navigate('/'))
+        } else {
+            fetch(`http://localhost:3000/users/${currentUser.id}`, {
+                method: "DELETE"
+            })
+            .then(navigate('/'))
+        }
+    }
+
   return (
     <div className='game-page'>
     <QuestionChat lobbyHost={lobbyHost} lobby={lobby} currentUser={currentUser} />
       <div className='chat'>
-        <div className='title-chatbox'>
-            <h3>Lobby Name: {lobby.lobbyname}</h3>
+        <div className='title-container'>
+            <h1 className='title'>Lobby Name: {lobby.lobbyname}</h1>
+            <div className='x-btn'onClick={() => leaveGame()}>X</div>
         </div>
           <nav className="nav">
               <ul className="nav__list">
@@ -97,7 +115,7 @@ export default function Chat({ host, lobby, currentUser}) {
         <form onSubmit={handleSubmit} className="message-form">
             <input name="content" className='message-form__textarea' placeholder="Type here..."></input>
                 <div className='message-form__actions'>
-            <button type="submit" className='message-form__submit'></button>
+                    <button type="submit" className='message-form__submit'></button>
                 </div>
         </form>
     </div>
