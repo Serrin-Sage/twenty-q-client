@@ -1,3 +1,7 @@
+.game-page {
+    display: flex;
+}
+
 .chat {
     width: 500px;
     background: #d6d6ce;

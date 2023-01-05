@@ -1,10 +1,10 @@
 import React from 'react'
 import { useEffect, useState } from 'react' 
+import QuestionChat from './QuestionChat'
 
-export default function Chat({ lobby, currentUser}) {
+export default function Chat({ host, lobby, currentUser}) {
     const [messages , setMessages] = useState([])
-
-    const [aUser, setAUser] = useState({})
+    const [lobbyHost, setLobbyHost] = useState({})
 
     useEffect(() => {
         let ws;
@@ -43,14 +43,14 @@ export default function Chat({ lobby, currentUser}) {
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${currentUser.id}`)
-        .then((res) => res.json())
-        .then((data) => {
-            setAUser(data)
-        })
+        fetch(`http://localhost:3000/hosts/${lobby.host_id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setLobbyHost(data)
+            })
     }, [])
 
-    console.log(aUser)
+    console.log(lobbyHost)
     const handleSubmit = async (event) => {
         event.preventDefault();
         let req = await fetch(`http://localhost:3000/messages`, {
@@ -66,6 +66,8 @@ export default function Chat({ lobby, currentUser}) {
     };
 
   return (
+    <div className='game-page'>
+    <QuestionChat lobbyHost={lobbyHost} lobby={lobby} currentUser={currentUser} />
       <div className='chat'>
         <div className='title-chatbox'>
             <h3>Lobby Name: {lobby.lobbyname}</h3>
@@ -84,7 +86,7 @@ export default function Chat({ lobby, currentUser}) {
                     messages.map((message) => {
                         return (
                             <div className='message-item' key={message.created_at}>
-                                <p className='message-username'>User_id: {message.user_id}</p>
+                                <p className='message-username'>{message.user_id < 1 ? "HOST" : `PLAYER ${message.user_id}`}</p>
                                 <p className='message-content'>{message.content}</p>
                             </div>
                         )
@@ -99,5 +101,6 @@ export default function Chat({ lobby, currentUser}) {
                 </div>
         </form>
     </div>
+  </div>
   )
 }

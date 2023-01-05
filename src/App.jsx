@@ -26,12 +26,13 @@ function App() {
                                                setCurrentHost={setCurrentHost}
                                                setShowClippy={setShowClippy} 
                                                showClippy={showClippy}/>}/>
-          <Route path="/lobbyform" element={ <LobbyForm selectedCat={selectedCat} 
+          <Route path="/lobbyform" element={<LobbyForm  setLobby={setLobby}
+                                                        selectedCat={selectedCat} 
                                                         currentHost={currentHost}
                                                         setShowClippy={setShowClippy}
                                                         showClippy={showClippy}/>} />
           <Route path='/gamelist' element={<GameList currentHost={currentHost} setLobby={setLobby}/>}/>
-          <Route path='/chat' element={<Chat lobby={lobby} currentUser={currentUser}/>}/>
+          <Route path='/chat' element={ <Chat host={host} lobby={lobby} currentUser={currentUser}/>}/>
         </Routes>
         
       </div>
