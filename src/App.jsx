@@ -5,6 +5,7 @@ import Login from './components/Login'
 import CategoryPage from './components/CategoryPage'
 import LobbyForm from './components/LobbyForm'
 import GameList from './components/GameList'
+import Chat from './components/Chat'
 
 function App() {
   const [selectedCat, setSelectedCat] = useState("")
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login host={host}/>}/>
           <Route path="/lobbyform" element={ <LobbyForm selectedCat={selectedCat}/>} />
           <Route path='/gamelist' element={<GameList />}/>
+          <Route path='/chat' element={<Chat />}/>
         </Routes>
         
       </div>
