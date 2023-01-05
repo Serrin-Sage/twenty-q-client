@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PictureSwitcher from "./PictureSwitcher";
+import Clippy from "./Clippy";
 
 const Login = ({ host }) => {
     const [username, setUserName] = useState("")
     const [selectedPic, setSelectedPic] = useState('')
+    const [showClippy, setShowClippy] = useState(false)
+    
     const navigate = useNavigate()
 
     let user = "";
@@ -17,18 +20,51 @@ const Login = ({ host }) => {
         }
     }, [])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if (host) {
-            navigate('/categories')
+            let req = await fetch("http://localhost:3000/hosts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: username,
+                    image: selectedPic.url
+                })
+            })
+            let res = await req.json()
+            if (req.ok) {
+                navigate('/categories')
+            } else {
+                setShowClippy(true)
+            }
+            
         }
         else {
-            navigate('/gamelist')
+            let req = await fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: username,
+                    image: selectedPic.url
+                })
+            })
+            let res = await req.json()
+            if (req.ok) {
+                navigate('/gamelist')
+            } else {
+                setShowClippy(true)
+            }
         }
     }
     return (
         <div className="login-container">
-            <h1 className="title">You are a {user}</h1>
+            <div className="title-container">
+                <h1 className="title">You are a {user}</h1>
+            </div>
             <div className="login-content">
                 <form onSubmit={handleSubmit}>
                     <label className="user-label">
@@ -48,6 +84,10 @@ const Login = ({ host }) => {
                     <input type="submit" value="Enter" className="enter-btn"/>
                 </form>
             </div>
+            {showClippy ? <Clippy message={"Oops your username is blank!"} 
+                                  setShowClippy={setShowClippy} 
+                                /> 
+                        : null}
         </div>
     )
 }

@@ -9,7 +9,6 @@
     padding: 20px;
     height: fit-content;
     width: 500px;
-    font-family: sans-serif;
     
 }
 
@@ -61,4 +60,28 @@ label {
 }
 .target-category {
     color: blue;
+}
+
+.create-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: fit-content;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    border-top: solid 2px white;
+    border-left: solid 2px white;
+    border-right: solid 2px black;
+    border-bottom: solid 2px black;
+    cursor: url(https://tinyurl.com/2p8w7p9c), auto;
+    font-family: Windows95;
+}
+
+.create-btn:active {
+    border-top: solid 2px black;
+    border-left: solid 2px black;
+    font-size: 12px;
+    box-shadow: inset 0 0 10px #8f8f8f;
 }

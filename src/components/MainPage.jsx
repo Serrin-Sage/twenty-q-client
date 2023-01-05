@@ -7,11 +7,14 @@ const MainPage = ({ setHost }) => {
     return (
         <div className="main-page">
             <div className="main-content">
-                <h1 className="title">20 Question Multiplayer</h1>
+                <div className="title-container">
+                    <h1 className="title">20 Question Multiplayer</h1>
+                </div>
                 <div className="main-buttons">
                     <Link to="login" className="main-btn" onClick={() => setHost(true)}>HOST</Link>
                     <Link to="login" className="main-btn" onClick={() => setHost(false)}>JOIN</Link>
                 </div>
+            
             </div>
         </div>
     )

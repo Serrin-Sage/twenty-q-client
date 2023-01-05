@@ -30,13 +30,16 @@
     
 }
 
-.title {
+.title-container {
     background: linear-gradient(90deg, rgb(0, 0, 134), rgb(48, 128, 194));
+    padding-top: 5px;
+    padding-left: 4px;
+}
+.title {
     text-align: left;
     width: 500px;
     color: white;
     font-size: 30px;
-    font-family: sans-serif;
     padding: 1px;
     margin: 0;
 }
@@ -61,7 +64,6 @@
     height: 50px;
     width: 80px;
     font-weight: bold;
-    font-family: sans-serif;
     text-decoration: none;
     color: black;
     border-top: solid 2px white;
