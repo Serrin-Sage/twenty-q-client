@@ -1,12 +1,32 @@
+.x-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    transform: translateY(-32px);
+    color: white;
+    border: solid 1px white;
+    background-color: red;
+    height: 17px;
+    width: 12px;
+    margin-right: 5px;
+    padding: 2px;
+    padding-left: 4px;
+}
+.x-btn:active {
+    border: solid 1px black;
+    box-shadow: inset 0 0 10px #8f8f8f;
+    font-size: 70%;
+}
+
 .chat {
     width: 500px;
-    background: #d6d6ce;
-    box-shadow: 2px 2px 2px #424242;
-    border: 1px solid gray;
-        border-top: 1px solid white;
-        border-left: 1px solid white;
-        border-right: 1px solid #848484;
-        border-bottom: 1px solid #848484;
+    background-color: rgb(200, 204, 189);
+        /* box-shadow: 2px 2px 2px #424242; */
+    border-top: solid 3px white;
+        border-left: solid 3px white;
+        border-right: solid 3px black;
+        border-bottom: solid 3px black;
     margin: 50px 0 20px 100px;
     position: relative;
     padding: 1px;
@@ -46,6 +66,7 @@
     overflow: hidden;
     padding: 5px;
     box-sizing: border-box;
+    
 }
 
 .message-list__container {
@@ -57,6 +78,8 @@
     word-wrap: break-word;
     word-break: break-all;
     background-color: #fff;
+    border-top: solid 1px black;
+    cursor: url(https://tinyurl.com/2p8w7p9c), auto;
 }
 
 .message-form {
@@ -73,6 +96,11 @@
     box-sizing: border-box;
     resize: none;
     font-size: 16px;
+    outline: none;
+    font-family: Windows95;
+}
+.message-form__textarea:focus {
+    border: solid 2px black;
 }
 
 .message-form__actions {
@@ -88,7 +116,17 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: #ECEAD8;
-    cursor: pointer;
+    border-top: solid 3px white;
+    border-left: solid 3px white;
+    border-right: solid 3px black;
+    border-bottom: solid 3px black;
+}
+
+.message-form__submit:active {
+    border-top: solid 3px black;
+    border-left: solid 3px black;
+    background-size: 50%;
+    box-shadow: inset 0 0 10px #8f8f8f;
 }
 
 .message-item{
