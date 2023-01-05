@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
 import Clippy from "./Clippy"
-const LobbyForm = ({ selectedCat, currentUser, setShowClippy, showClippy }) => {
+const LobbyForm = ({ selectedCat, currentHost, setShowClippy, showClippy }) => {
     const [lobbyName, setLobbyName] = useState("")
     const [numOfPlayers, setNumOfPlayers] = useState(1)
     const [answer, setAnswer] = useState("")
     const [password, setPassword] = useState("")
 
-    console.log(currentUser)
+    console.log(currentHost)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -18,7 +18,7 @@ const LobbyForm = ({ selectedCat, currentUser, setShowClippy, showClippy }) => {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                host_id: currentUser.id,
+                host_id: currentHost.id,
                 lobbyname: lobbyName,
                 players: numOfPlayers,
                 answer: answer,

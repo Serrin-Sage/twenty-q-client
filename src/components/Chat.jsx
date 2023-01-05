@@ -1,9 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from 'react' 
 
-export default function Chat() {
+export default function Chat({ lobby, currentUser}) {
     const [messages , setMessages] = useState([])
-
     useEffect(() => {
         let ws;
         const request = async () => {
@@ -23,7 +22,7 @@ export default function Chat() {
             ws.onmessage = (event) => {
                 const {data} = event;
                 let payload = JSON.parse(data)
-                if (payload.type === "working" || payload.type ==="message")return;
+                if (payload.type === "ping" || payload.type ==="message")return;
                 let x = JSON.parse(event.data)
                 console.log("It still works :s", x)
                 if (x.type === "confirm_subscription") return;
@@ -45,15 +44,15 @@ export default function Chat() {
         let req = await fetch(`http://localhost:3000/messages`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({content: event.target.content.value})
+            body: JSON.stringify({content: event.target.content.value, user_id: currentUser.id})
         })
-        content = '';
+        // content = '';
     };
 
   return (
       <div className='chat'>
         <div className='title-chatbox'>
-            <h3>LOBBYNAME - Instant Message</h3>
+            <h3>Lobby Name: {lobby.lobbyname}</h3>
         </div>
           <nav className="nav">
               <ul className="nav__list">
@@ -61,7 +60,7 @@ export default function Chat() {
                   <li className="nav__item">Edit</li>
                   <li className="nav__item">Insert</li>
               </ul>
-              <span className="nav__warning-level">LOBBYNAME's Warning Level: 0%</span>
+              <span className="nav__warning-level">{lobby.lobbyname}</span>
           </nav>
         <div className='message-list'>
             <div className='message-list__container'>

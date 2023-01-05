@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 
-const GameList = () => {
+const GameList = ({ setLobby, currentHost }) => {
   const [gameArray, setGameArray] = useState([])
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+
   useEffect(() => {
     fetch("http://localhost:3000/lobbies")
     .then((res) => res.json())
@@ -18,13 +21,17 @@ const GameList = () => {
     }, 2000)
   },[])
 
+  const navigateToLobby = (clickedLobby) => {
+    setLobby(clickedLobby)
+    navigate('/chat')
+  }
   const ActiveGames = () => {
     return (
     <>
       {
         gameArray.map((game) => {
           return (
-            <div className="lobby-details">
+            <div className="lobby-details" onClick={() => navigateToLobby(game)}>
               <div>
                 {game.lobbyname}
               </div>
