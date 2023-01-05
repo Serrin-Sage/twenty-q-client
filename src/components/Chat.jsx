@@ -6,7 +6,7 @@ export default function Chat({ lobby, currentUser}) {
     useEffect(() => {
         let ws;
         const request = async () => {
-            let req = await fetch(`http://localhost:3000/messages`)
+            let req = await fetch(`http://localhost:3000/messages/${lobby.id}`)
             let res = await req.json()
             setMessages(res)
             console.log(res)
@@ -16,7 +16,7 @@ export default function Chat({ lobby, currentUser}) {
             ws = new WebSocket("ws://localhost:3000/cable")
             ws.onopen = () => {
                 console.log("WS is on!")
-            ws.send(JSON.stringify({"command": "subscribe", "identifier": "{\"channel\": \"LiveFeedChannel\"}"}))
+            ws.send(JSON.stringify({"command": "subscribe", "identifier": `{"channel": "ChatLobbyChannel", "lobby_id": ${lobby.id}}`}))
             }
 
             ws.onmessage = (event) => {
@@ -44,7 +44,7 @@ export default function Chat({ lobby, currentUser}) {
         let req = await fetch(`http://localhost:3000/messages`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({content: event.target.content.value, user_id: currentUser.id})
+            body: JSON.stringify({content: event.target.content.value, lobby_id: lobby.id, user_id: currentUser.id})
         })
         // content = '';
     };
