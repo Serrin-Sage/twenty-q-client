@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from 'react' 
+import { useEffect, useState, useRef } from 'react' 
 import { useNavigate } from "react-router-dom";
 import QuestionChat from './QuestionChat'
 
@@ -7,6 +7,8 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
     const [messages , setMessages] = useState([])
     const [lobbyHost, setLobbyHost] = useState({})
     const [aUser, setAUser] = useState({})
+    const [input, setInput] = useState("")
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -64,8 +66,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
             body: JSON.stringify({content: event.target.content.value, lobby_id: lobby.id, user_id: currentUser.id})
         })
         let res = await req.json()
-        console.log(res)
-        // content = '';
+        setInput('')
     };
 
     const leaveGame = () => {
@@ -82,6 +83,26 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
         }
     }
 
+
+    const ScrollToBottom = () => {
+        const messagesEndRef = useRef(null)
+
+        const scrollToBottom = () => {
+            messagesEndRef.current.scrollIntoView({ behavior: "smooth"})
+        }
+
+        useEffect(() => {
+            scrollToBottom();
+        },[])
+    
+        useEffect(() => {
+            scrollToBottom()
+        })
+
+        return <div ref={messagesEndRef} />
+    }
+
+    
   return (
     <div className='game-page'>
     {/* <QuestionChat lobbyHost={lobbyHost} lobby={lobby} currentUser={currentUser} /> */}
@@ -93,7 +114,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
         </div>
           <nav className="nav">
               <ul className="nav__list">
-                  <li className="nav__item">Ask Host Questions!</li>
+                  {host ? <li className="nav__item">Your Answer: {lobby.answer}</li> : <li className="nav__item">Ask the Host questions!</li> }
               </ul>
               <span className="nav__warning-level">{lobby.lobbyname}</span>
           </nav>
@@ -109,10 +130,11 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
                         )
                     })
                 }
+                <ScrollToBottom />
             </div>
         </div>
         <form onSubmit={handleSubmit} className="message-form">
-            <input name="content" className='message-form__textarea' placeholder="Type here..."></input>
+            <input name="content" className='message-form__textarea' placeholder="Type here..." autoComplete='off' value={input} onChange={(e) => setInput(e.target.value)}></input>
                 <div className='message-form__actions'>
                     <button type="submit" className='message-form__submit'></button>
                 </div>
