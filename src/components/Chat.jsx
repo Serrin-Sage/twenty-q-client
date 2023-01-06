@@ -8,6 +8,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
     const [lobbyHost, setLobbyHost] = useState({})
     const [aUser, setAUser] = useState({})
     const [input, setInput] = useState("")
+    const [questionCount, setQuestionCount] = useState(null)
 
     const navigate = useNavigate()
 
@@ -55,6 +56,13 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
             })
     }, [])
 
+    useEffect(() => {
+        fetch(`http://localhost:3000/lobbies/${lobby.id}`)
+        .then(res => res.json())
+        .then((data) => {
+            setQuestionCount(data.question_count)
+        })
+    }, [setMessages])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -66,6 +74,19 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
             body: JSON.stringify({content: event.target.content.value, lobby_id: lobby.id, user_id: currentUser.id})
         })
         let res = await req.json()
+
+        if (res.content.endsWith("?")) {
+            fetch(`http://localhost:3000/lobbies/${lobby.id}`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(({
+                    question_count: -1
+                }))
+            })
+        }
         setInput('')
     };
 
@@ -115,7 +136,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
           <nav className="nav">
               <ul className="nav__list">
                   {host ? <li className="nav__item">Your Answer: {lobby.answer}</li> : <li className="nav__item">Ask the Host questions!</li> }
-                  <ul>{lobby.question_count}</ul>
+                  <ul>{questionCount}</ul>
               </ul>
               <span className="nav__warning-level">{host ? `${currentHost.name}` : `${currentUser.name}`}</span>
           </nav>
