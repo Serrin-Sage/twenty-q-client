@@ -115,6 +115,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
           <nav className="nav">
               <ul className="nav__list">
                   {host ? <li className="nav__item">Your Answer: {lobby.answer}</li> : <li className="nav__item">Ask the Host questions!</li> }
+                  <ul>{lobby.question_count}</ul>
               </ul>
               <span className="nav__warning-level">{host ? `${currentHost.name}` : `${currentUser.name}`}</span>
           </nav>
