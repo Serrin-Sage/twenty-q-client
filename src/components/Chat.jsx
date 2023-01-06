@@ -116,7 +116,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
               <ul className="nav__list">
                   {host ? <li className="nav__item">Your Answer: {lobby.answer}</li> : <li className="nav__item">Ask the Host questions!</li> }
               </ul>
-              <span className="nav__warning-level">{lobby.lobbyname}</span>
+              <span className="nav__warning-level">{host ? `${currentHost.name}` : `${currentUser.name}`}</span>
           </nav>
         <div className='message-list'>
             <div className='message-list__container'>
