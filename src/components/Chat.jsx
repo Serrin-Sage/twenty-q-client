@@ -88,13 +88,12 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
       <div className='chat'>
         <div className='title-container'>
             <h1 className='title'>Lobby Name: {lobby.lobbyname}</h1>
+            <h3 className='sub-title'>Category: {lobby.category}</h3>
             <div className='x-btn'onClick={() => leaveGame()}>X</div>
         </div>
           <nav className="nav">
               <ul className="nav__list">
-                  <li className="nav__item">File</li>
-                  <li className="nav__item">Edit</li>
-                  <li className="nav__item">Insert</li>
+                  <li className="nav__item">Ask Host Questions!</li>
               </ul>
               <span className="nav__warning-level">{lobby.lobbyname}</span>
           </nav>

@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     float: right;
-    transform: translateY(-32px);
+    transform: translateY(-92px);
     color: white;
     border: solid 1px white;
     background-color: red;
@@ -24,6 +24,9 @@
     font-size: 70%;
 }
 
+.sub-title {
+    color: white;
+}
 .chat {
     width: 500px;
     background-color: rgb(200, 204, 189);
