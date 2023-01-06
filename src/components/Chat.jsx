@@ -125,7 +125,7 @@ export default function Chat({ host, lobby, currentUser, currentHost}) {
                     messages.map((message) => {
                         return (
                             <div className='message-item' key={message.created_at}>
-                                <p className='message-username'>{message.user_id < 1 ? "HOST" : `${message.user.name}`}</p>
+                                <p className='message-username'>{message.user_id < 1 ? `HOST: ${currentHost.name}` : `${message.user.name}`}</p>
                                 <p className='message-content'>{message.content}</p>
                             </div>
                         )
